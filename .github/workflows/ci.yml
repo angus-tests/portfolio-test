@@ -1,12 +1,10 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
-  push:
+  pull_request:
     branches:
       - master
-  pull_request:
-      branches:
-        - master
+
 env:
   IMAGE_NAME: portfolio-test-image
   REGISTRY: ghcr.io
@@ -30,40 +28,7 @@ jobs:
           push: false
           tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing
           load: true
-          
+
       - name: Run Tests
         run: |
-          docker run --env-file .env.testing -d ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing
-          # Your command to run tests in the Docker container
-
-  build-and-push:
-    needs: test # Depends on the above job passing
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: create .env file
-        run: echo "${{ secrets.ENV_FILE_PRODUCTION }}"  > .env
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          docker run --env-file .env.testing ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing php artisan test
