@@ -12,7 +12,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Schema;
 
 class ProjectSeeder extends Seeder
 {
@@ -25,10 +25,10 @@ class ProjectSeeder extends Seeder
     {
 
       //Clear data
-      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      Schema::disableForeignKeyConstraints();
       Project::truncate();
       DB::table('project_tags')->truncate();
-      DB::statement('SET FOREIGN_KEY_CHECKS=1');
+      Schema::enableForeignKeyConstraints();
 
       //Redwood
       $redwood=Project::create([

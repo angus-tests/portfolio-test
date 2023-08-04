@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\Schema;
 //Models
 use App\Models\Category;
 
@@ -20,9 +20,9 @@ class CategorySeeder extends Seeder
     public function run()
     {
       //Clear data
-      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      Schema::disableForeignKeyConstraints();
       Category::truncate();
-      DB::statement('SET FOREIGN_KEY_CHECKS=1');
+      Schema::enableForeignKeyConstraints();
 
       //Websites
       Category::create([

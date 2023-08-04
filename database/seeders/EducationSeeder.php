@@ -10,7 +10,7 @@ use App\Models\Education;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Schema;
 
 class EducationSeeder extends Seeder
 {
@@ -22,9 +22,9 @@ class EducationSeeder extends Seeder
     public function run()
     {
         // Clear data
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Schema::disableForeignKeyConstraints();
         Education::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        Schema::enableForeignKeyConstraints();
 
         // Polesworth
         Education::create([

@@ -9,7 +9,7 @@ use App\Models\SkillSection;
 
 //Support
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Schema;
 class SkillSeeder extends Seeder
 {
     /**
@@ -20,9 +20,9 @@ class SkillSeeder extends Seeder
     public function run()
     {
         //Clear data
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Schema::disableForeignKeyConstraints();
         Skill::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        Schema::enableForeignKeyConstraints();
 
         //Get skill sections
         $front_end=SkillSection::where('name', '=', 'Front end')->firstOrFail();

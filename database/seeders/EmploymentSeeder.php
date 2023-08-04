@@ -10,7 +10,7 @@ use App\Models\Employment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Schema;
 
 class EmploymentSeeder extends Seeder
 {
@@ -22,9 +22,9 @@ class EmploymentSeeder extends Seeder
     public function run()
     {
         // Clear data
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Schema::disableForeignKeyConstraints();
         Employment::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        Schema::enableForeignKeyConstraints();
 
         // John Lewis
         Employment::create([

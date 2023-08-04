@@ -9,7 +9,7 @@ use App\Models\Tag;
 //Support
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Schema;
 class TagSeeder extends Seeder
 {
     /**
@@ -21,9 +21,9 @@ class TagSeeder extends Seeder
     {
 
       //Clear data
-      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      Schema::disableForeignKeyConstraints();
       Tag::truncate();
-      DB::statement('SET FOREIGN_KEY_CHECKS=1');
+      Schema::enableForeignKeyConstraints();
 
 
       //Web

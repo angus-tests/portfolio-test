@@ -9,7 +9,7 @@ use App\Models\Role;
 //Support
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Schema;
 class RoleSeeder extends Seeder
 {
     /**
@@ -21,9 +21,9 @@ class RoleSeeder extends Seeder
     {
 
       //Clear data
-      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      Schema::disableForeignKeyConstraints();
       Role::truncate();
-      DB::statement('SET FOREIGN_KEY_CHECKS=1');
+      Schema::enableForeignKeyConstraints();
 
       //Roles
       Role::create([

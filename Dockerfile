@@ -90,9 +90,6 @@ COPY --from=composer_test /app/vendor /var/www/html/vendor
 # Copy test project files
 COPY tests /var/www/html/tests
 
-# Create sqlite test database
-RUN touch /var/www/html/database/database.sqlite
-
 # Run migrations
 CMD php artisan migrate --force
 

@@ -10,7 +10,7 @@ use App\Models\Role;
 //Support
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Schema;
 class UserSeeder extends Seeder
 {
     /**
@@ -21,9 +21,9 @@ class UserSeeder extends Seeder
     public function run()
     {
       //Clear data
-      DB::statement('SET FOREIGN_KEY_CHECKS=0');
+      Schema::disableForeignKeyConstraints();
       User::truncate();
-      DB::statement('SET FOREIGN_KEY_CHECKS=1');
+      Schema::enableForeignKeyConstraints();
 
 
       $superAdminRole=Role::where('name', '=', 'Super Admin')->firstOrFail();
