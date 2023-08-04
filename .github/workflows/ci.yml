@@ -18,8 +18,8 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: create env.testing file
-        run: echo "${{ secrets.ENV_FILE_TESTING }}" > .env.testing
+      #- name: create env.testing file # - Uncomment this to load testing env vars from secrets (then add --env-file .env.testing to docker run below)
+        #run: echo "${{ secrets.ENV_FILE_TESTING }}" > .env.testing
 
       - name: Build Docker image
         uses: docker/build-push-action@v2
@@ -33,6 +33,6 @@ jobs:
 
       - name: Run Tests
         run: |
-          docker run -d --name my_container --env-file .env.testing ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing php artisan test
+          docker run -d --name my_container ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing
 
 
