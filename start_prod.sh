@@ -1,10 +1,7 @@
 #!/bin/sh
 
-# Create .env file from environment variables
-printenv | grep -v "no_proxy" >> /var/www/html/.env
 
 # Run our artisan commands
-
 php artisan route:clear
 
 php artisan route:cache
