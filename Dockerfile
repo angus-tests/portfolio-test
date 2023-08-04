@@ -90,6 +90,3 @@ COPY --from=composer_test /app/vendor /var/www/html/vendor
 # Copy test project files
 COPY tests /var/www/html/tests
 
-# Run migrations
-CMD php artisan migrate --force
-
