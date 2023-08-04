@@ -54,9 +54,6 @@ COPY . /var/www/html
 # Set workdir
 WORKDIR /var/www/html
 
-# Create .env file from environment variables
-RUN printenv | grep -v "no_proxy" >> .env
-
 # Remove the 'tests' directory (to ensure they are not in prod image, they can be added back later for testing)
 RUN rm -rf /var/www/html/tests
 
@@ -93,4 +90,6 @@ COPY tests /var/www/html/tests
 # Create sqlite test database
 RUN touch /var/www/html/database/database.sqlite
 
-
+# Copy our testing script and set permissions
+COPY start_tests.sh /start.sh
+RUN chmod +x /start.sh

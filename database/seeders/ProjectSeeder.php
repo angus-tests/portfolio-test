@@ -47,7 +47,7 @@ class ProjectSeeder extends Seeder
       $data = [
           ['project_id'=> $redwood->id, 'tag_id'=> Tag::where('name', '=', 'Web')->firstOrFail()->id],
           ['project_id'=> $redwood->id, 'tag_id'=> Tag::where('name', '=', 'PHP')->firstOrFail()->id],
-          ['project_id'=> $redwood->id, 'tag_id'=> Tag::where('name', '=', 'BOOTSTRAP')->firstOrFail()->id],
+          ['project_id'=> $redwood->id, 'tag_id'=> Tag::where('name', '=', 'Bootstrap')->firstOrFail()->id],
       ];
       DB::table('project_tags')->insert($data);
 

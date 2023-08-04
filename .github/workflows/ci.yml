@@ -33,10 +33,6 @@ jobs:
 
       - name: Run Tests
         run: |
-          docker run -d --name my_container --env-file .env.testing ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing
-          docker exec my_container sh -c "php artisan migrate --force"
-          docker exec my_container sh -c "php artisan db:seed --force"
-          docker exec my_container sh -c "php artisan test"
-
+          docker run -d --name my_container --env-file .env.testing ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing php artisan test
 
 

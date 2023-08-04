@@ -25,5 +25,6 @@ php artisan optimize
 
 chmod -R 777 storage
 
-# Finally, start PHP-FPM and nginx
-php-fpm -D &&  nginx -g "daemon off;"
+php artisan db:seed --force
+
+php artisan test
