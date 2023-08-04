@@ -28,6 +28,8 @@ jobs:
           push: false
           tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing
           load: true
+          target: test # Target the test build target in the Dockerfile
+
 
       - name: Run Tests
         run: |
