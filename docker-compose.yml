@@ -23,7 +23,7 @@ services:
             - selenium
     mysql:
         image: 'mysql:8.0'
-        platform: 'linux/x86_64'
+        platform: 'linux/amd64'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
