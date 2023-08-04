@@ -33,4 +33,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          docker run --env-file .env.testing ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing php artisan db:seed --force ** php artisan test
+          docker run --env-file .env.testing ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:testing php artisan db:seed --force && php artisan test
