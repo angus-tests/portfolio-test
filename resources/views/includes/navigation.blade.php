@@ -19,6 +19,10 @@
           <x-nav-link href="/contact" :active="Request::is('contact')">
             {{ __('Contact') }}
           </x-nav-link>
+
+          <x-nav-link href="/contact" :active="Request::is('contact')">
+            {{ __('Contact again') }}
+          </x-nav-link>
         </div>
       </div> 
       <div class="flex-none">
