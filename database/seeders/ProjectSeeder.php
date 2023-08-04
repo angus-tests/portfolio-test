@@ -26,8 +26,8 @@ class ProjectSeeder extends Seeder
 
       //Clear data
       Schema::disableForeignKeyConstraints();
-      Project::truncate();
-      DB::table('project_tags')->truncate();
+      Project::query()->delete();
+      DB::table('project_tags')->delete();
       Schema::enableForeignKeyConstraints();
 
       //Redwood

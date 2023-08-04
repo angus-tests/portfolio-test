@@ -21,7 +21,7 @@ class BlockSeeder extends Seeder
     {
         //Clear data
         Schema::disableForeignKeyConstraints();
-        Block::truncate();
+        Block::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         //Redwood block

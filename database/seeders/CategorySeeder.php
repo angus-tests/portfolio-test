@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
     {
       //Clear data
       Schema::disableForeignKeyConstraints();
-      Category::truncate();
+      Category::query()->delete();
       Schema::enableForeignKeyConstraints();
 
       //Websites

@@ -23,7 +23,7 @@ class EmploymentSeeder extends Seeder
     {
         // Clear data
         Schema::disableForeignKeyConstraints();
-        Employment::truncate();
+        Employment::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         // John Lewis

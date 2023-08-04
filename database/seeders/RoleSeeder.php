@@ -22,7 +22,7 @@ class RoleSeeder extends Seeder
 
       //Clear data
       Schema::disableForeignKeyConstraints();
-      Role::truncate();
+      Role::query()->delete();
       Schema::enableForeignKeyConstraints();
 
       //Roles

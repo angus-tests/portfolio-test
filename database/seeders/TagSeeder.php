@@ -22,7 +22,7 @@ class TagSeeder extends Seeder
 
       //Clear data
       Schema::disableForeignKeyConstraints();
-      Tag::truncate();
+      Tag::query()->delete();
       Schema::enableForeignKeyConstraints();
 
 

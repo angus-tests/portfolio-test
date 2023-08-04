@@ -21,7 +21,7 @@ class SkillSeeder extends Seeder
     {
         //Clear data
         Schema::disableForeignKeyConstraints();
-        Skill::truncate();
+        Skill::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         //Get skill sections

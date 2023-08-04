@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
     {
       //Clear data
       Schema::disableForeignKeyConstraints();
-      User::truncate();
+      User::query()->delete();
       Schema::enableForeignKeyConstraints();
 
 

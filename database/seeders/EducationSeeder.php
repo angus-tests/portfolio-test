@@ -23,7 +23,7 @@ class EducationSeeder extends Seeder
     {
         // Clear data
         Schema::disableForeignKeyConstraints();
-        Education::truncate();
+        Education::query()->delete();
         Schema::enableForeignKeyConstraints();
 
         // Polesworth
