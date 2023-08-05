@@ -14,7 +14,7 @@ php artisan storage:link
 php artisan migrate --force
 
 # Set folder permission
-chown -R www-data:www-data storage
+chown -R nginx:nginx storage
 chmod -R 755 storage
 
 
