@@ -58,12 +58,11 @@ WORKDIR /var/www/html
 # Remove the 'tests' directory (to ensure they are not in prod image, they can be added back later for testing)
 RUN rm -rf /var/www/html/tests
 
-
-# Add www-data user to nginx group
-RUN addgroup www-data nginx
+# Ensure nginx runs as www-data
+RUN sed -i 's/user nginx;/user www-data;/' /etc/nginx/nginx.conf
 
 # Change the owner group of the directories to nginx
-RUN chown -R :nginx /var/www/html && chmod -R g+rwxs /var/www/html
+RUN chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
 
 # Set group permissions
 RUN chmod -R g+rw /var/www/html
