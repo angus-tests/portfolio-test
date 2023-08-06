@@ -4,3 +4,5 @@ README.md
 composer.lock
 node_modules
 .env
+.git
+.github
