@@ -35,7 +35,6 @@ jobs:
         with:
           context: .
           push: true
-          no-cache: true # Testing
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           target: prod # Target the prod build target in the Dockerfile
