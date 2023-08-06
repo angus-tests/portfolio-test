@@ -59,11 +59,11 @@ WORKDIR /var/www/html
 RUN rm -rf /var/www/html/tests
 
 
-# Add nginx user to www-data group
-RUN addgroup nginx www-data
+# Add www-data user to nginx group
+RUN addgroup www-data nginx
 
-# Change the owner group of the directories to www-data
-RUN chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
+# Change the owner group of the directories to nginx
+RUN chown -R :nginx /var/www/html && chmod -R g+rwxs /var/www/html
 
 # Set group permissions
 RUN chmod -R g+rw /var/www/html
