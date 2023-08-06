@@ -11,6 +11,10 @@ php artisan view:clear
 
 php artisan storage:link
 
+# Set folder permission
+chown -R www-data:www-data /var/www/html/storage
+chmod -R 775 /var/www/html/storage
+
 php artisan migrate --force
 
 # Finally, start PHP-FPM and nginx
