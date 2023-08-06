@@ -60,6 +60,10 @@ WORKDIR /var/www/html
 # Remove the 'tests' directory (to ensure they are not in prod image, they can be added back later for testing)
 RUN rm -rf /var/www/html/tests
 
+# Set folder permissions for Laravel
+# RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 777 storage bootstrap/cache
+
 # Copy our prod script and set permissions
 COPY start_prod.sh /start.sh
 RUN chmod +x /start.sh
