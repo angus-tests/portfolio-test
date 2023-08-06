@@ -5,11 +5,11 @@
 printenv | awk -F "=" 'NF==2 && $2 !~ /[\n\t ]/' > .env
 
 
-# Add www-data user to nginx group
-addgroup www-data nginx
+# Add nginx user to www-data group
+addgroup nginx www-data
 
-# Change the owner group of the directories to nginx
-chown -R :nginx /var/www/html && chmod -R g+rwxs /var/www/html
+# Change the owner group of the directories to www-data
+chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
 
 # Set group permissions
 chmod -R 775 /var/www/html
