@@ -14,11 +14,11 @@ php artisan storage:link
 php artisan migrate --force
 
 # Set folder permission
-chown -R www-data:www-data storage
-chmod -R 755 storage
+chown -R www-data:www-data /var/www/html/storage
+chmod g+s /var/www/html/storage
+chmod 775 /var/www/html/storage
 
-# Set symlink permissions
-find public -type l -exec chmod 755 {} \;
+
 
 
 
