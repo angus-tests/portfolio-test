@@ -14,8 +14,12 @@ php artisan storage:link
 php artisan migrate --force
 
 # Set folder permission
-chown -R nginx:nginx storage
+chown -R www-data:www-data storage
 chmod -R 755 storage
+
+# Set symlink permissions
+find public -type l -exec chmod 755 {} \;
+
 
 
 # Finally, start PHP-FPM and nginx
