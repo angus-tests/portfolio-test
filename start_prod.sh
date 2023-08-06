@@ -4,7 +4,6 @@
 # Create .env file from environment variables
 printenv | awk -F "=" 'NF==2 && $2 !~ /[\n\t ]/' > .env
 
-
 # Add nginx user to www-data group
 addgroup nginx www-data
 
