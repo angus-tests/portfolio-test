@@ -15,7 +15,7 @@ php artisan migrate --force
 
 
 # Set umask and start PHP-FPM in the background
-umask 002 && php-fpm -D
+umask 0002 && php-fpm -D
 
 # Start nginx in the foreground
 nginx -g "daemon off;"
