@@ -42,6 +42,9 @@ RUN docker-php-ext-install \
     zip \
     intl
 
+# Add nginx user to www-data group
+RUN addgroup nginx www-data
+
 # Copy vendor files from composer stage
 COPY --from=composer_prod /app/vendor /var/www/html/vendor
 
@@ -61,8 +64,8 @@ RUN rm -rf /var/www/html/tests
 RUN mkdir -p storage bootstrap/cache
 
 # Set folder permissions for Laravel
-RUN chmod -R 777 /var/www/html/storage 
-RUN chmod -R 777 /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
 # Copy our prod script and set permissions
 COPY start_prod.sh /start.sh
