@@ -13,14 +13,14 @@ php artisan storage:link
 
 php artisan migrate --force
 
+
+# Add nginx user to www-data group
+usermod -aG www-data nginx
+
 # Set folder permission
 chown -R www-data:www-data /var/www/html/storage
 chmod g+s /var/www/html/storage
 chmod 775 /var/www/html/storage
-
-
-
-
 
 # Finally, start PHP-FPM and nginx
 php-fpm -D &&  nginx -g "daemon off;"
