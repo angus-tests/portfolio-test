@@ -42,8 +42,6 @@ RUN docker-php-ext-install \
     zip \
     intl
 
-# Add nginx user to www-data group
-RUN addgroup nginx www-data
 
 # Copy vendor files from composer stage
 COPY --from=composer_prod /app/vendor /var/www/html/vendor
@@ -60,9 +58,15 @@ WORKDIR /var/www/html
 # Remove the 'tests' directory (to ensure they are not in prod image, they can be added back later for testing)
 RUN rm -rf /var/www/html/tests
 
-# Set folder permissions for Laravel
-# RUN chown -R www-data:www-data storage bootstrap/cache
-RUN chmod -R 777 storage bootstrap/cache
+
+# Add nginx user to www-data group
+RUN addgroup nginx www-data
+
+# Change the owner group of the directories to www-data
+RUN chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
+
+# Set group permissions
+RUN chmod -R g+rw /var/www/html
 
 # Copy our prod script and set permissions
 COPY start_prod.sh /start.sh
