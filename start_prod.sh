@@ -14,8 +14,6 @@ php artisan storage:link
 php artisan migrate --force
 
 
-# Set umask and start PHP-FPM in the background
-umask 0002 && php-fpm -D
 
-# Start nginx in the foreground
-nginx -g "daemon off;"
+# Finally, start PHP-FPM and nginx
+php-fpm -D &&  nginx -g "daemon off;"

@@ -59,10 +59,7 @@ WORKDIR /var/www/html
 RUN rm -rf /var/www/html/tests
 
 # Ensure nginx runs as www-data
-#RUN sed -i 's/user nginx;/user www-data;/' /etc/nginx/nginx.conf
-
-# Add nginx user to www-data group
-RUN addgroup nginx www-data
+RUN sed -i 's/user nginx;/user www-data;/' /etc/nginx/nginx.conf
 
 # Change the owner group of the directories to www-data
 RUN chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
