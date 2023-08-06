@@ -72,7 +72,7 @@ COPY start_prod.sh /start.sh
 RUN chmod +x /start.sh
 
 # Copy Nginx config file
-COPY nginx.conf /etc/nginx/http.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80
