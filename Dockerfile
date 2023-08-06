@@ -65,7 +65,7 @@ RUN mkdir -p storage bootstrap/cache
 
 # Set folder permissions for Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache
-RUN chmod -R 775 storage bootstrap/cache
+RUN chmod -R 777 storage bootstrap/cache
 
 # Copy our prod script and set permissions
 COPY start_prod.sh /start.sh

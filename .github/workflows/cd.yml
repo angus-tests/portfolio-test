@@ -34,7 +34,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          no-cache: true # Testing
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
