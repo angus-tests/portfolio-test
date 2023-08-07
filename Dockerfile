@@ -62,6 +62,12 @@ RUN rm -rf /var/www/html/tests
 COPY start_prod.sh /start.sh
 RUN chmod +x /start.sh
 
+# Change the owner group of the directories to www-data
+RUN chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
+
+# Set group permissions
+RUN chmod -R 775 /var/www/html
+
 # Copy Nginx config file
 COPY nginx.conf /etc/nginx/nginx.conf
 
