@@ -32,7 +32,7 @@ RUN apk update && apk add --no-cache \
     git \
     oniguruma-dev \
     icu-dev \
-    libzip-dev \
+    libzip-dev
 
 # Configure PHP extensions
 RUN docker-php-ext-install \
