@@ -32,7 +32,8 @@ RUN apk update && apk add --no-cache \
     git \
     oniguruma-dev \
     icu-dev \
-    libzip-dev
+    libzip-dev \
+    nginx
 
 # Configure PHP extensions
 RUN docker-php-ext-install \
@@ -66,6 +67,9 @@ RUN chown -R :www-data /var/www/html && chmod -R g+rwxs /var/www/html
 
 # Set group permissions
 RUN chmod -R 775 /var/www/html
+
+# Copy Nginx config file
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80
 EXPOSE 80
