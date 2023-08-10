@@ -41,6 +41,12 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'images' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/images.log'),
+            'level' => 'info',
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

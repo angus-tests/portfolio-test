@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 
+use Illuminate\Support\Facades\Log;
+
 class StorageController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class StorageController extends Controller
      */
     public function image($filename)
     {
-        return $this->serveFileFromStorage('app/public/images/' . $filename);
+      Log::channel('images')->info("Fetching image: ".$filename);
+      return $this->serveFileFromStorage('app/public/images/' . $filename);
     }
 
     /**
@@ -22,7 +25,7 @@ class StorageController extends Controller
      */
     public function storage($filename)
     {
-        return $this->serveFileFromStorage('app/' . $filename);
+      return $this->serveFileFromStorage('app/' . $filename);
     }
 
     /**
@@ -30,18 +33,18 @@ class StorageController extends Controller
      */
     private function serveFileFromStorage($path)
     {
-        $fullPath = storage_path($path);
+      $fullPath = storage_path($path);
 
-        if (!File::exists($fullPath)) {
-            abort(404);
-        }
+      if (!File::exists($fullPath)) {
+          abort(404);
+      }
 
-        $file = File::get($fullPath);
-        $type = File::mimeType($fullPath);
+      $file = File::get($fullPath);
+      $type = File::mimeType($fullPath);
 
-        $response = Response::make($file, 200);
-        $response->header("Content-Type", $type);
+      $response = Response::make($file, 200);
+      $response->header("Content-Type", $type);
 
-        return $response;
+      return $response;
     }
 }

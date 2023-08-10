@@ -35,8 +35,8 @@ Route::get('/sitemapGeneral.xml', [SitemapController::class, 'general'])->name('
 Route::get('/sitemapProjects.xml', [SitemapController::class, 'projects'])->name('sitemap.projects');
 
 //Storage
-Route::get('images/{filename}', 'StorageController@image');
-Route::get('storage/{filename}', 'StorageController@storage');
+Route::get('/images/{filename}', 'StorageController@image');
+Route::get('/storage/{filename}', 'StorageController@storage');
 
 // Dashboard
 Route::get('/dashboard', function () {
