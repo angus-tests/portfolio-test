@@ -12,7 +12,8 @@ class StorageController extends Controller
      */
     public function image($path)
     {
-        return $this->serveFileFromPath('app/public/images/' . $path);
+      Log::channel('images')->info("Image requested, path:".$path);
+      return $this->serveFileFromPath('app/public/images/' . $path);
     }
 
     /**
