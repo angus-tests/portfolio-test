@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class StorageController extends Controller
 {
@@ -29,8 +30,8 @@ class StorageController extends Controller
     {
         $storagePath = storage_path($path);
         
-        if (!File::exists($storagePath)) {
-            abort(404);
+        if (!File::exists($storagePath) || File::isDirectory($storagePath)) {
+          abort(404);
         }
 
         $mimeType = File::mimeType($storagePath);
