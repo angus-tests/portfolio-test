@@ -11,6 +11,7 @@ use App\Http\Controllers\EmploymentController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\StorageController;
 
 use Illuminate\Http\Request;
 
@@ -35,7 +36,7 @@ Route::get('/sitemapGeneral.xml', [SitemapController::class, 'general'])->name('
 Route::get('/sitemapProjects.xml', [SitemapController::class, 'projects'])->name('sitemap.projects');
 
 //Storage
-Route::get('/images/{filename}', 'StorageController@image');
+Route::get('/images/{filename}', [StorageController::class, 'image']);
 Route::get('/storage/{filename}', 'StorageController@storage');
 
 // Dashboard
