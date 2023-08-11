@@ -63,7 +63,7 @@ RUN chmod +x /start.sh
 RUN rm -rf /var/www/html/tests
 
 #-----Setup permissions------
-RUN addgroup -g 9999 web
+RUN addgroup -g 1000 web
 
 RUN addgroup nginx web && \
     addgroup www-data web
