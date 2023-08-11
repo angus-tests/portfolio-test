@@ -32,7 +32,6 @@ class EducationSeeder extends Seeder
             'level' => "GCSE",
             'start_date' => Carbon::parse('2011-01-09'),
             'end_date' => Carbon::parse('2016-01-07'),
-            'description' => "Dunno mate"
         ]);
 
         // KEC
@@ -41,15 +40,14 @@ class EducationSeeder extends Seeder
             'level' => "A level",
             'start_date' => Carbon::parse('2016-01-09'),
             'end_date' => Carbon::parse('2018-01-07'),
-            'description' => "College enit"
         ]);
 
         // Sheffield
         Education::create([
             'institute' => "University of Sheffield",
-            'level' => "Bsc Computer Science",
+            'level' => "Bsc Computer Science (First-Class Honours)",
             'start_date' => Carbon::parse('2019-01-09'),
-            'description' => "Seshfield mate"
+            'end_date' => Carbon::parse('2023-01-06'),
         ]);
     }
 }

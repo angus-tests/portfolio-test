@@ -17,8 +17,6 @@ php artisan view:clear
 
 php artisan view:cache
 
-php artisan storage:link
-
 php artisan migrate --force
 
 php artisan optimize
